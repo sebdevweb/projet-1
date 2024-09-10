@@ -3,10 +3,107 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
-  <title>Landing Page | HTML version</title>
+  <link rel="stylesheet" href="./css/style.css">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+    </style>
+  <title>VueJS | Landing Page | HTML version</title>
+  <script type="importmap">
+    {
+      "imports": {
+        "vue": "https://unpkg.com/vue@3.4.38/dist/vue.esm-browser.js",
+        "vue/server-renderer": "https://cdn.jsdelivr.net/npm/@vue/server-renderer@3.4.38/dist/server-renderer.esm-browser.js"
+      },
+      "scopes": {}
+    }
+  </script>
 </head>
 <body>
+
+  <div id="app">
+    <header>
+      <div class="logo">Site name</div>
+      <nav>
+        <ul>
+          <li>page</li>
+          <li>page</li>
+          <li>page</li>
+        </ul>
+        <button class="btn_std" type="button>">Button</button>
+      </nav>
+    </header>
+
+    <main>
+      <article>
+        <h1>Landing page title</h1>
+        <p>Subheading that sets up context, shares more info about the website, or generally gets people psyched to keep scrolling.</p>
+        <button class="btn_big">Button</button>
+        <img src="./assets/Hero Image.png" alt="Hero Landingpage">
+      </article>
+
+      <section class="section_one">
+        <h2>Section heading</h2>
+        <ul>
+          <li v-for="item in list" :key="item.id">
+            <img :src="item.img" :alt="item.alt">
+            <h3>Subheading</h3>
+            <p>Body text for whatever you’d like to add more to the subheading.</p>
+          </li>
+        </ul>
+      </section>
+
+      <section class="section_two">
+        <h2>Section heading</h2>
+        <div class="section_two--left">
+          <div v-for="itemTwo in listTwo" :key="index">
+            <h3>Subheading</h3>
+            <p>{{ itemTwo.text }}</p>
+          </div>
+        </div>
+      </section>
+    </main>
+  </div>
   
+
+
+  <script type="module">
+    import { createApp, ref } from 'vue'
+
+    createApp({
+      
+      setup() {
+        
+        const list = ref([
+          {
+            id: 0, 
+            img: './assets/Image-1.png',
+            alt: 'Title image One'
+          }, {
+            id: 1, 
+            img: './assets/Image-2.png', 
+            alt: 'Title image Two'
+          }, {
+            id: 2, 
+            img: './assets/Image-3.png', 
+            alt: 'Title image Three'
+          }
+        ])
+
+        const listTwo = ref([
+          {text: 'Body text for whatever you’d like to expand on the main point.'},
+          {text: 'Body text for whatever you’d like to say. Add main takeaway points, quotes, anecdotes.'},
+          {text: 'Body text for whatever you’d like to add more to the main point. It provides details, explanations, and context.'},
+        ])
+
+        return {
+          list,
+          listTwo
+        }
+      }
+
+    }).mount('#app')
+    
+  </script>
+
 </body>
 </html>
