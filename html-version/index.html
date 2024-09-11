@@ -25,9 +25,7 @@
       <div class="logo">Site name</div>
       <nav>
         <ul>
-          <li>page</li>
-          <li>page</li>
-          <li>page</li>
+          <li v-for="itemNav in navList" :key="itemNav.id">{{ itemNav.text }}</li>
         </ul>
         <button class="btn_std" type="button>">Button</button>
       </nav>
@@ -53,13 +51,47 @@
       </section>
 
       <section class="section_two">
-        <h2>Section heading</h2>
-        <div class="section_two--left">
-          <div v-for="itemTwo in listTwo" :key="index">
-            <h3>Subheading</h3>
-            <p>{{ itemTwo.text }}</p>
+        <div class="section_two--group">
+          <div class="left">
+            <h2>Section heading</h2>
+            <div v-for="itemTwo in listTwo" :key="index">
+              <h3>Subheading</h3>
+              <p>{{ itemTwo.text }}</p>
+            </div>
+            <div class="actions">
+              <button class="btn_std" type="button">Button</button>
+              <button class="btn_std--secondary" type="button">Secondary button</button>
+            </div>
+          </div>
+          <div class="right">
+            <img src="./assets/Image-3.png" alt="Image section two">
           </div>
         </div>
+      </section>
+
+      <section class="section_three">
+        <h2>Section heading</h2>
+        <div class="section_three--group">
+          <div v-for="itemThree in listThree" :key="index" class="item">
+            <h3>{{ itemThree.text}}</h3>
+            <div class="item--group">
+              <img :src="itemThree.img" :alt="itemThree.name">
+              <h4>{{ itemThree.name }}</h4>
+              <p>{{ itemThree.desc }}</p>
+            </div>
+
+          </div>
+        </div>
+      </section>
+      <section class="section_four">
+        <h2>Add your email for receive notifications</h2>
+        <form>
+          <fieldset>
+            <label for="email">Your email</label>
+            <input type="email" placeholder="Add your email">
+            <button @click.prevent="notify">Send</button>
+          </fieldset>
+        </form>
       </section>
     </main>
   </div>
@@ -72,19 +104,26 @@
     createApp({
       
       setup() {
+
+        const navList = ref([
+          {id: 0, text: 'Page One'},
+          {id: 1, text: 'Page Two'},
+          {id: 2, text: 'Page Three'},
+          {id: 2, text: 'Page Four'}
+        ])
         
         const list = ref([
           {
             id: 0, 
-            img: './assets/Image-1.png',
+            img: './assets/Image.png',
             alt: 'Title image One'
           }, {
             id: 1, 
-            img: './assets/Image-2.png', 
+            img: './assets/Image-1.png', 
             alt: 'Title image Two'
           }, {
             id: 2, 
-            img: './assets/Image-3.png', 
+            img: './assets/Image-2.png', 
             alt: 'Title image Three'
           }
         ])
@@ -95,9 +134,35 @@
           {text: 'Body text for whatever you’d like to add more to the main point. It provides details, explanations, and context.'},
         ])
 
+        const listThree = ref([
+          {
+            text: '“A terrific piece of praise”', 
+            name: 'John', 
+            desc: 'lorem ipsum', 
+            img: './assets/Avatar.png'
+          }, {
+            text: '“A fantastic bit of feedback”', 
+            name: 'Jane', 
+            desc: 'sit dolor amet', 
+            img: './assets/Avatar-1.png'
+          }, {
+            text: '“A genuinely glowing review”', 
+            name: 'Mary', 
+            desc: 'consectetur adipisicing elit', 
+            img: './assets/Avatar-2.png'
+          }
+        ])
+
+        function notify() {
+          alert('Votre mail a été envoyé avec succès !')
+        }
+
         return {
+          navList,
           list,
-          listTwo
+          listTwo,
+          listThree,
+          notify
         }
       }
 
