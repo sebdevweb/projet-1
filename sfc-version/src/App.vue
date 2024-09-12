@@ -1,6 +1,10 @@
 <script setup>
   import { ref } from 'vue'
   import Header from './components/Header.vue'
+  import SectionOne from './components/SectionOne.vue'
+  import SectionTwo from './components/SectionTwo.vue'
+  import SectionThree from './components/SectionThree.vue'
+  import SectionFour from './components/SectionFour.vue'
 </script>
 
 <template>
@@ -12,6 +16,10 @@
       <button class="btn_big">Button</button>
       <img src="./assets/Hero Image.png" alt="Hero Landingpage">
     </article>
+    <SectionOne />
+    <SectionTwo />
+    <SectionThree />
+    <SectionFour />
   </main>
 </template>
 
@@ -47,31 +55,49 @@ body {
 }
 
 /* MAIN: article */
-article {
-  padding: 0 80px;
-  h1 {
-    font-size: 64px;
-    color: var(--c-black);
-    line-height: auto;
-    letter-spacing: -2px;
-  }
-  p {
-    margin-top: 24px;
-    font-size: 24px;
-    color: var(--c-black75);
-    font-weight: 400;
-    max-width: 844px;
-  }
-  button {
-    margin: 40px 0 80px; 
-    &.btn_big {
+main {
+  article {
+    padding: 0 80px;
+    h1 {
+      font-size: 64px;
+      color: var(--c-black);
+      line-height: auto;
+      letter-spacing: -2px;
+    }
+    p {
+      margin-top: 24px;
       font-size: 24px;
-      padding: 20px 32px;
+      color: var(--c-black75);
+      font-weight: 400;
+      max-width: 844px;
+    }
+    button {
+      margin: 40px 0 80px; 
+      &.btn_big {
+        font-size: 24px;
+        padding: 20px 32px;
+      }
+    }
+    img {
+      max-width: 1280px;
+      height: auto;
     }
   }
-  img {
-    max-width: 1280px;
-    height: auto;
+  section {
+    padding: 0 80px;
+    h2 {
+      font-size: 48px;
+      letter-spacing: -2px;
+      color: var(--c-black);
+      font-weight: 600;
+    }
+    p {
+      margin-top: 24px;
+      font-size: 24px;
+      color: var(--c-black75);
+      font-weight: 400;
+      max-width: 844px;
+    }
   }
 }
 
